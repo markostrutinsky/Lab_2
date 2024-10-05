@@ -7,8 +7,8 @@ import lombok.RequiredArgsConstructor;
 import java.util.List;
 
 @Data
-@RequiredArgsConstructor
-@AllArgsConstructor
 public class ObjectNotValidException extends RuntimeException {
-    private List<String> errorMessages;
+    public ObjectNotValidException(String message) {
+        super(message);
+    }
 }

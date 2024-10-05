@@ -20,16 +20,15 @@ public class EntityValidator<T> {
     private final ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
     private final Validator validator = validatorFactory.getValidator();
 
-    public void validate(T objectDTO) {
-        var violations = validator.validate(objectDTO);
+    public void validate(T object) {
+        var violations = validator.validate(object);
         if (!violations.isEmpty()) {
             var errorMessages = violations
                     .stream()
                     .map(ConstraintViolation::getMessage)
                     .toList();
-
-            System.out.println(errorMessages);
-            throw new ObjectNotValidException(errorMessages);
+            String joinedMessage = String.join(" ", errorMessages);
+            throw new ObjectNotValidException(joinedMessage);
         }
     }
 }

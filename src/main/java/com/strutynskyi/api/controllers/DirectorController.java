@@ -52,7 +52,7 @@ public class DirectorController {
         Director updatedDirector = directorService.update(directorModel, id);
         return new ResponseEntity<>(DirectorMappers.toDirectorDTO(updatedDirector), HttpStatus.OK);
     }
-    //sdbcsdckjks
+
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteDirector(@PathVariable Long id) {
         Director deletedDirector = directorService.delete(id);
